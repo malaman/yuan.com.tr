@@ -135,8 +135,10 @@ MEDIA_URL = '/media/'
 
 # Wagtail settings
 
-WAGTAIL_SITE_NAME = "webapp"
+WAGTAIL_SITE_NAME = "Yuan Makina San. Tic. Ltd. Şti"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://example.com'
+BASE_URL = 'http://yuan.com.tr'
+
+ALLOWED_HOSTS = [ 'http://yuan.com.tr', ]

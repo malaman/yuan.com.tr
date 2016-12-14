@@ -141,4 +141,4 @@ WAGTAIL_SITE_NAME = "Yuan Makina San. Tic. Ltd. Şti"
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'http://yuan.com.tr'
 
-ALLOWED_HOSTS = [ 'http://yuan.com.tr', ]
+ALLOWED_HOSTS = [ 'http://yuan.com.tr', 'http://www.yuan.com.tr', ]

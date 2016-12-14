@@ -139,6 +139,6 @@ WAGTAIL_SITE_NAME = "Yuan Makina San. Tic. Ltd. Şti"
 
 # Base URL to use when referring to full URLs within the Wagtail admin backend -
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
-BASE_URL = 'http://yuan.com.tr'
+BASE_URL = 'https://yuan.com.tr'
 
-ALLOWED_HOSTS = [ 'http://yuan.com.tr', 'http://www.yuan.com.tr', ]
+ALLOWED_HOSTS = [ 'https://yuan.com.tr', 'https://www.yuan.com.tr', ]

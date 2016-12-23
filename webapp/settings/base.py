@@ -97,6 +97,17 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
     }
+    'postgresql': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'postgres',
+        'USER': 'postgres',
+        'HOST': 'localhost',
+        'OPTIONS': {
+            'sslmode': 'verify-ca',
+            'sslrootcert': '/etc/uwsgi/ssl/ca.pem',
+            'sslcert': '/etc/uwsgi/ssl/client.pem',
+            'sslkey': '/etc/uwsgi/ssl/client-key.pem',
+    }
 }
 
 

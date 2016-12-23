@@ -107,6 +107,7 @@ DATABASES = {
             'sslrootcert': '/etc/uwsgi/ssl/ca.pem',
             'sslcert': '/etc/uwsgi/ssl/client.pem',
             'sslkey': '/etc/uwsgi/ssl/client-key.pem',
+        }
     }
 }
 

@@ -1,9 +1,9 @@
-from __future__ import absolute_import, unicode_literals
-
-from django.db import models
-
 from wagtail.wagtailcore.models import Page
+from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel
+from common.language_link import TranslatablePageMixin
 
 
-class HomePage(Page):
-    pass
+class HomePage(Page, TranslatablePageMixin):
+    content_panels = [
+        MultiFieldPanel(TranslatablePageMixin.panels, 'Language links')
+    ]

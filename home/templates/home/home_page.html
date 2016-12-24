@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+ {% load i18n %}
+
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
@@ -8,4 +10,13 @@
     <p>You can access the admin interface <a href="{% url 'wagtailadmin_home' %}">here</a> (make sure you have run "./manage.py createsuperuser" in the console first).
 
     <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
+    {% if page.english_page and page.get_language != 'en' %}
+        <a href="{{ page.english_page.url }}">{% trans "View in English" %}</a>
+    {% endif %}
+
+    {% if page.turkish_page and page.get_language != 'tr' %}
+        <a href="{{ page.turkish_page.url }}">{% trans "View in Turkish" %}</a>
+    {% endif %}
+
+    {{ request.
 {% endblock %}

@@ -4,6 +4,6 @@ from language.link import TranslatablePageMixin
 
 
 class HomePage(Page, TranslatablePageMixin):
-    content_panels = [
+    content_panels = Page.content_panels + [
         MultiFieldPanel(TranslatablePageMixin.panels, 'Language links')
     ]

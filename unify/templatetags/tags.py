@@ -3,10 +3,10 @@ from django import template
 register = template.Library()
 
 @register.assignment_tag(takes_context=True)
-def get_site_root(context):
+def get_language_root(context):
     # NB this returns a core.Page, not the implementation-specific model used
     # so object-comparison to self will return false as objects would differ
-    return context['request'].site.root_page
+    return context['self'].get_ancestors(inclusive=True).get(depth=3)
 
 # Retrieves the top menu items - the immediate children of the parent page
 @register.inclusion_tag('tags/top_menu.html', takes_context=True)

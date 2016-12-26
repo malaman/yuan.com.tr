@@ -99,13 +99,10 @@
 				    {# Navbar #}
 					<ul class="nav navbar-nav">
 					
-						{# Home #}
-						<li class="dropdown">
-							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
-								Home
-							</a>
-						</li>
-						{# End Home #}
+                            {% block menu %}
+                                {% get_site_root as site_root %}
+                                {% top_menu parent=site_root calling_page=self %}
+                            {% endblock %}
 
 						{# Search Block #}
 						<li>

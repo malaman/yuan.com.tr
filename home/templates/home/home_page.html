@@ -1,7 +1,5 @@
 {% extends "base.html" %}
 
- {% load i18n %}
-
 {% block body_class %}template-homepage{% endblock %}
 
 {% block content %}
@@ -11,12 +9,10 @@
 
     <p>If you haven't already given the documentation a read, head over to <a href="http://docs.wagtail.io/">http://docs.wagtail.io</a> to start building on Wagtail</p>
     {% if page.english_page and page.get_language != 'en' %}
-        <a href="{{ page.english_page.url }}">{% trans "View in English" %}</a>
+        <a href="{{ page.english_page.url }}">Engish</a>
     {% endif %}
 
     {% if page.turkish_page and page.get_language != 'tr' %}
-        <a href="{{ page.turkish_page.url }}">{% trans "View in Turkish" %}</a>
+        <a href="{{ page.turkish_page.url }}">Türkçe</a>
     {% endif %}
-
-    {{ request.
 {% endblock %}

@@ -1,6 +1,6 @@
 from wagtail.wagtailcore.models import Page
 from wagtail.wagtailadmin.edit_handlers import MultiFieldPanel
-from common.language_link import TranslatablePageMixin
+from language.link import TranslatablePageMixin
 
 
 class HomePage(Page, TranslatablePageMixin):

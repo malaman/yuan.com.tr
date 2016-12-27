@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'unify',
     'language',
     'home',
+#    'blog',
 
     'wagtail.wagtailforms',
     'wagtail.wagtailredirects',

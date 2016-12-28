@@ -1,0 +1,18 @@
+{% load wagtailcore_tags %}
+
+{% if ancestors %}
+<div class="breadcrumbs">
+    <div class="container">
+        <h1 class="pull-left">{{ self.title }}</h1>
+        <ul class="pull-right breadcrumb">
+        {% for ancestor in ancestors %}
+            {% if forloop.last %}
+                <li class="active">{{ ancestor }}</li>
+            {% else %}
+                <li><a href="{% pageurl ancestor %}">{{ ancestor }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endif %}

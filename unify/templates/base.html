@@ -7,37 +7,37 @@
 <!--[if IE 9]> <html lang="{{ page.get_language }}" class="ie9"> <![endif]-->
 <!--[if !IE]><!--> <html> <!--<![endif]-->
 <head>
-	<title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_suffix %}{% endblock %}</title>
+    <title>{% block title %}{% if self.seo_title %}{{ self.seo_title }}{% else %}{{ self.title }}{% endif %}{% endblock %}{% block title_postfix %} | Yuan{% endblock %}</title>
 
     {# Meta #}
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<meta name="description" content="">
-	<meta name="author" content="">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-	{# Favicon #}
-	<link rel="shortcut icon" href="{% static 'favicon.ico' %}">
+    {# Favicon #}
+    <link rel="shortcut icon" href="{% static 'favicon.ico' %}">
 
-	{# Web Fonts #}
-	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
+    {# Web Fonts #}
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
 
     {% compress css %}
         {# CSS Global Compulsory #}
-	    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
-	    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 
-	    {# CSS Header and Footer #}
-	    <link rel="stylesheet" href="{% static 'assets/css/headers/header-v6.css' %}">
-	    <link rel="stylesheet" href="{% static 'assets/css/footers/footer-v1.css' %}">
+        {# CSS Header and Footer #}
+        <link rel="stylesheet" href="{% static 'assets/css/headers/header-v6.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/footers/footer-v1.css' %}">
 
-	    {# CSS Implementing Plugins #}
-	    <link rel="stylesheet" href="{% static 'assets/plugins/animate.css' %}">
-	    <link rel="stylesheet" href="{% static 'assets/plugins/line-icons/line-icons.css' %}">
-	    <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.min.css' %}">
+        {# CSS Implementing Plugins #}
+        <link rel="stylesheet" href="{% static 'assets/plugins/animate.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/plugins/line-icons/line-icons.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.min.css' %}">
 
-	    {# CSS Theme #}
-	    <link rel="stylesheet" href="{% static 'assets/css/theme-colors/blue.css'' id="style_color" %}">
-	    <link rel="stylesheet" href="{% static 'assets/css/theme-skins/dark.css' %}">
+        {# CSS Theme #}
+        <link rel="stylesheet" href="{% static 'assets/css/theme-colors/blue.css'' id="style_color" %}">
+        <link rel="stylesheet" href="{% static 'assets/css/theme-skins/dark.css' %}">
 
         {# CSS Customization #}
         <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
@@ -66,228 +66,161 @@
     <![endif]-->
 </head>
 
-<body class="header-fixed header-fixed-space">
+{# Override this block to set custom body classes on a template by template basis #}
+<body class="{% block body_class %}header-fixed header-fixed-space{% endblock %}">
+
     {% wagtailuserbar %}
     
     {# Wrapper #}
     <div class="wrapper">
-    
-		{# Header v6 #}
-		<div class="header-v6 header-classic-white header-sticky">
 
-			{# Navbar #}
-			<div class="navbar mega-menu" role="navigation">
-
-                {# Container #}
-				<div class="container">
-					
-					{# Menu Container #}
-					<div class="menu-container">
-
-                        {# Toggle #}
-						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-							<span class="sr-only">Toggle navigation</span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-							<span class="icon-bar"></span>
-						</button>
-						{# End Toggle #}
-
-						{# Navbar Brand #}
-						<div class="navbar-brand">
-							<a href="{{ language_root.url }}">
-								<img class="shrink-logo" src="{% static 'assets/img/yuan-logo.svg' %}" alt="Logo">
-							</a>
-						</div>
-						{# End Navbar Brand #}
-
-						{# Header Inner Right #}
-						<div class="header-inner-right">
-							<ul class="menu-icons-list">
-								<li class="menu-icons">
-                                    
-                                    {% if page.english_page and page.get_language != 'en' %}
-                                    <a href="{{ page.english_page.url }}"><i class="yuan-menu-icons-style menu-icons-style fa fa-globe"></i></a>
-                                    {% endif %}
-
-                                    {% if page.turkish_page and page.get_language != 'tr' %}
-                                    <a href="{{ page.turkish_page.url }}"><i class="yuan-menu-icons-style menu-icons-style fa fa-globe"></i></a>
-                                    {% endif %}
-
-								</li>
-							</ul>
-						</div>
-						{# End Header Inner Right #}
-
-					</div>
-                    {# Menu Container #}
-
-					{# Navbar Collapse #}
-					<div class="collapse navbar-collapse navbar-responsive-collapse">
-						<div class="menu-container">
-							<ul class="nav navbar-nav">
-
-                            {% block menu %}
-                                {% top_menu parent=language_root calling_page=self %}
-                            {% endblock %}
-
-							</ul>
-						</div>
-					</div>
-                    {# End Navbar Collapse #}
-
-				</div>
-				{# End Container #}
-				
-			</div>
-			{# End Navbar #}
-
-		</div>
-		{# End Header v6 #}
+        {% block menu %}
+            {% top_menu parent=language_root calling_page=self %}
+        {% endblock %}
         
         {# Interactive Slider #}
-		<div class="interactive-slider-v2">
-			<div class="container">
-				<h1>Welcome to Unify</h1>
-				<p>Clean and fully responsive Template.</p>
-			</div>
-		</div>
+        <div class="interactive-slider-v2">
+            <div class="container">
+                <h1>Welcome to Unify</h1>
+                <p>Clean and fully responsive Template.</p>
+            </div>
+        </div>
         {# End Interactive Slider v2 #}
         
-		{# Content #}
-		<div class="container content-md">
+        {# Content #}
+        <div class="container content-md">
         {% block content %}{% endblock %}
-		</div>
+        </div>
         {# End Content #}
 
-		{# Footer #}
-		<div id="footer-default" class="footer-default">        
-			<div class="footer">
+        {# Footer #}
+        <div id="footer-default" class="footer-default">        
+            <div class="footer">
 
-			    {# Container #}
-				<div class="container">
+                {# Container #}
+                <div class="container">
 
                     {# Row #}
-					<div class="row">
-						
-						{# Col-md-4 #}
-						<div class="col-md-4 md-margin-bottom-40">
+                    <div class="row">
+                        
+                        {# Col-md-4 #}
+                        <div class="col-md-4 md-margin-bottom-40">
 
-							{# About #}
-							<div class="headline"><h2>About</h2></div>
-							<p class="margin-bottom-25 md-margin-bottom-40">Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.</p>
-							{# End About #}
+                            {# About #}
+                            <div class="headline"><h2>About</h2></div>
+                            <p class="margin-bottom-25 md-margin-bottom-40">Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.</p>
+                            {# End About #}
 
-							{# Mountly Newsletter #}
-							<div class="headline"><h2>Monthly Newsletter</h2></div>
-							<p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
-							<form class="footer-subscribe">
-								<div class="input-group">
-									<input type="text" class="form-control" placeholder="Email Address">
-									<span class="input-group-btn">
-										<button class="btn-u" type="button">Subscribe</button>
-									</span>
-								</div>
-							</form>
-							{# End Monthly Newsletter #}
+                            {# Mountly Newsletter #}
+                            <div class="headline"><h2>Monthly Newsletter</h2></div>
+                            <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
+                            <form class="footer-subscribe">
+                                <div class="input-group">
+                                    <input type="text" class="form-control" placeholder="Email Address">
+                                    <span class="input-group-btn">
+                                        <button class="btn-u" type="button">Subscribe</button>
+                                    </span>
+                                </div>
+                            </form>
+                            {# End Monthly Newsletter #}
 
-						</div>
-						{# End Col-md-4 #}
+                        </div>
+                        {# End Col-md-4 #}
 
                         {# Col-md-4 #}
-						<div class="col-md-4 md-margin-bottom-40">
-						
-							{# Recent Blogs #}
-							<div class="posts">
-								<div class="headline"><h2>Recent Blog Entries</h2></div>
-								<dl class="dl-horizontal">
-									<dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/6.jpg' %}" alt="" /></a></dt>
-									<dd>
-										<p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-									</dd>
-								</dl>
-								<dl class="dl-horizontal">
-									<dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/10.jpg' %}" alt="" /></a></dt>
-									<dd>
-										<p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-									</dd>
-								</dl>
-								<dl class="dl-horizontal">
-									<dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/11.jpg' %}" alt="" /></a></dt>
-									<dd>
-										<p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-									</dd>
-								</dl>
-							</div>
-							{# End Recent Blogs #}
-						</div>
-						{# End Col-md-4 #}
+                        <div class="col-md-4 md-margin-bottom-40">
+                        
+                            {# Recent Blogs #}
+                            <div class="posts">
+                                <div class="headline"><h2>Recent Blog Entries</h2></div>
+                                <dl class="dl-horizontal">
+                                    <dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/6.jpg' %}" alt="" /></a></dt>
+                                    <dd>
+                                        <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/10.jpg' %}" alt="" /></a></dt>
+                                    <dd>
+                                        <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
+                                    </dd>
+                                </dl>
+                                <dl class="dl-horizontal">
+                                    <dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/11.jpg' %}" alt="" /></a></dt>
+                                    <dd>
+                                        <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
+                                    </dd>
+                                </dl>
+                            </div>
+                            {# End Recent Blogs #}
+                        </div>
+                        {# End Col-md-4 #}
 
                         {# Col-md-4 #}
-						<div class="col-md-4">
+                        <div class="col-md-4">
 
-							{# Contact Us #}
-							<div class="headline"><h2>Contact Us</h2></div>
-							<address class="md-margin-bottom-40">
-								25, Lorem Lis Street, Orange <br />
-								California, US <br />
-								Phone: 800 123 3456 <br />
-								Fax: 800 123 3456 <br />
-								Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
-							</address>
-							{# End Contact Us #}
+                            {# Contact Us #}
+                            <div class="headline"><h2>Contact Us</h2></div>
+                            <address class="md-margin-bottom-40">
+                                25, Lorem Lis Street, Orange <br />
+                                California, US <br />
+                                Phone: 800 123 3456 <br />
+                                Fax: 800 123 3456 <br />
+                                Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
+                            </address>
+                            {# End Contact Us #}
 
-							{# Social Links #}
-							<div class="headline"><h2>Stay Connected</h2></div>
-							<ul class="social-icons">
-								<li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
-								<li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
-								<li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
-								<li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
-								<li><a href="#" data-original-title="Pinterest" class="social_pintrest"></a></li>
-								<li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
-								<li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
-							</ul>
-							{# End Social Links #}
+                            {# Social Links #}
+                            <div class="headline"><h2>Stay Connected</h2></div>
+                            <ul class="social-icons">
+                                <li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
+                                <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
+                                <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
+                                <li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
+                                <li><a href="#" data-original-title="Pinterest" class="social_pintrest"></a></li>
+                                <li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
+                                <li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
+                            </ul>
+                            {# End Social Links #}
 
-						</div>
-						{# End Col-md-4 #}
-						
-					</div>
+                        </div>
+                        {# End Col-md-4 #}
+                        
+                    </div>
                     {# End Row #}
 
-				</div>
-				{# End Container #}
-				
-			</div>
-			{# End Footer #}
+                </div>
+                {# End Container #}
+                
+            </div>
+            {# End Footer #}
 
     </div>
     {# End Wrapper #}
 
-	{# JS Global Compulsory #}
-	<script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery-migrate.min.js' %}"></script>
-	<script type="text/javascript" src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    {# JS Global Compulsory #}
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery/jquery-migrate.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
 
     {# JS Implementing Plugins #}
-	<script type="text/javascript" src="{% static 'assets/plugins/back-to-top.js' %}"></script>
-	<script type="text/javascript" src="{% static 'assets/plugins/smoothScroll.js' %}"></script>
-	<script type="text/javascript" src="{% static 'assets/plugins/jquery.parallax.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/back-to-top.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/smoothScroll.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/jquery.parallax.js' %}"></script>
     
-	{# JS Customization #}
-	<script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
-	
+    {# JS Customization #}
+    <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
+    
     {# JS Page Level #}
-	<script type="text/javascript" src="{% static 'assets/js/app.js' %}"></script>
-	<script type="text/javascript" src="{% static 'assets/js/plugins/style-switcher.js' %}"></script>
-	<script type="text/javascript">
-		jQuery(document).ready(function() {
-			App.init();
-			StyleSwitcher.initStyleSwitcher();
-		});
-	</script>
-	
+    <script type="text/javascript" src="{% static 'assets/js/app.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/js/plugins/style-switcher.js' %}"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function() {
+            App.init();
+            StyleSwitcher.initStyleSwitcher();
+        });
+    </script>
+    
     <!--[if lt IE 9]>
     <script src="{% static 'assets/plugins/respond.js' %}"></script>
     <script src="{% static 'assets/plugins/html5shiv.js' %}"></script>

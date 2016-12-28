@@ -23,4 +23,5 @@ def top_menu(context, parent, calling_page=None):
         'menuitems': menuitems,
         # required by the pageurl tag that we want to use within this template
         'request': context['request'],
+        'self': context['self'],
     }

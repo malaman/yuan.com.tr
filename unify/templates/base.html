@@ -1,4 +1,4 @@
-{% load static wagtailuserbar unify %}
+{% load compress static wagtailuserbar unify %}
 
 {% get_language_root as language_root %}
 
@@ -21,28 +21,49 @@
 	{# Web Fonts #}
 	<link rel="stylesheet" href="//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin">
 
-    {# CSS Global Compulsory #}
-	<link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
+    {% compress css %}
+        {# CSS Global Compulsory #}
+	    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+	    <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 
-	{# CSS Header and Footer #}
-	<link rel="stylesheet" href="{% static 'assets/css/headers/header-v6.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/css/footers/footer-v1.css' %}">
+	    {# CSS Header and Footer #}
+	    <link rel="stylesheet" href="{% static 'assets/css/headers/header-v6.css' %}">
+	    <link rel="stylesheet" href="{% static 'assets/css/footers/footer-v1.css' %}">
 
-	{# CSS Implementing Plugins #}
-	<link rel="stylesheet" href="{% static 'assets/plugins/animate.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/plugins/line-icons/line-icons.css' %}">
-	<link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.min.css' %}">
+	    {# CSS Implementing Plugins #}
+	    <link rel="stylesheet" href="{% static 'assets/plugins/animate.css' %}">
+	    <link rel="stylesheet" href="{% static 'assets/plugins/line-icons/line-icons.css' %}">
+	    <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.min.css' %}">
 
-	{# CSS Theme #}
-	<link rel="stylesheet" href="{% static 'assets/css/theme-colors/blue.css'' id="style_color" %}">
-	<link rel="stylesheet" href="{% static 'assets/css/theme-skins/dark.css' %}">
+	    {# CSS Theme #}
+	    <link rel="stylesheet" href="{% static 'assets/css/theme-colors/blue.css'' id="style_color" %}">
+	    <link rel="stylesheet" href="{% static 'assets/css/theme-skins/dark.css' %}">
 
-    {# CSS Customization #}
-    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
+        {# CSS Customization #}
+        <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
 
-    {# Override this in templates to add extra stylesheets #}
-    {% block extra_css %}{% endblock %}
+        {# Override this in templates to add extra stylesheets #}
+        {% block extra_css %}{% endblock %}
+    {% endcompress %}
+
+    {# Javascript that needs to be called from head e.g. google analytics snippet and bootstrap shivs #}
+    <script type="text/javascript">
+          var _gaq = _gaq || [];
+          _gaq.push(['_setAccount', 'UA-xxxxxxx-x']);
+          _gaq.push(['_trackPageview']);
+
+          (function() {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+          })();
+    </script>
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
 </head>
 
 <body class="header-fixed header-fixed-space">

@@ -1,6 +1,10 @@
 {% extends "base.html" %}
 
-{% block breadcrumbs %}{% endblock %}
-{% block heading %}{% endblock %}
+{% block extra_css %}
+    <link rel="stylesheet" href="assets/plugins/owl-carousel/owl-carousel/owl.carousel.css">
+{% endblock %}
 
+{% block slider %}
+    {% include "includes/carousel.html" with carousel_items=self.carousel_items.all only %}
+{% endblock %}
 

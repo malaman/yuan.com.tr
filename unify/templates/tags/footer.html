@@ -48,18 +48,9 @@
                             <dd>
                                 <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
                             </dd>
-                        </dl>
-                        <dl class="dl-horizontal">
-                            <dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/10.jpg' %}" alt="" /></a></dt>
-                            <dd>
-                                <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-                            </dd>
-                        </dl>
-                        <dl class="dl-horizontal">
-                            <dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/11.jpg' %}" alt="" /></a></dt>
-                            <dd>
-                                <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-                            </dd>
+                            {% for blog in blogs %}
+                                {% include "includes/blog_list_item.html" %}
+                            {% endfor %}
                         </dl>
                     </div>
                     {# End Recent Blogs #}

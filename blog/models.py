@@ -9,7 +9,7 @@ from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
-from common.models import  AppStreamBlock, CarouselItem, RelatedLink
+from unify.models import  AppStreamBlock, CarouselItem, RelatedLink
 from language.link import TranslatablePageMixin
 
 

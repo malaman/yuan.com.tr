@@ -2,7 +2,7 @@ from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import StreamField
 from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, MultiFieldPanel, StreamFieldPanel
 from modelcluster.fields import ParentalKey
-from common.models import CarouselItem, AppStreamBlock
+from unify.models import CarouselItem, AppStreamBlock
 from language.link import TranslatablePageMixin
 
 

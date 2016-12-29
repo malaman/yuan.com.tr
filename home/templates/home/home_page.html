@@ -1,10 +1,13 @@
 {% extends "base.html" %}
 
-{% block extra_css %}
-    <link rel="stylesheet" href="assets/plugins/owl-carousel/owl-carousel/owl.carousel.css">
-{% endblock %}
+{% load static %}
 
 {% block slider %}
     {% include "includes/carousel.html" with carousel_items=self.carousel_items.all only %}
 {% endblock %}
 
+{% block content %}
+    {% if self.body %}
+        {% include "includes/streamfield.html" with content=self.body %}
+    {% endif %}
+{% endblock %}

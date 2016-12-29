@@ -72,12 +72,10 @@
     {# Wrapper #}
     <div class="wrapper">
 
-        {% block menu %}
+        {% block header %}
             {% get_language_root as language_root %}
             {% top_menu parent=language_root calling_page=self %}
         {% endblock %}
-
-        {% block breadcrumbs %}{# breadcrumbs #}{% endblock %}
 
         {% block slider %}{% endblock %}
 

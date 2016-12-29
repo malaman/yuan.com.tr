@@ -45,6 +45,16 @@ def top_menu_children(context, parent):
         'request': context['request'],
     }
 
+# Blog feed for home page
+@register.inclusion_tag('tags/footer.html', takes_context=True)
+def blog_listing_homepage(context, count=2):
+    blogs = BlogPage.objects.live().order_by('-date')
+    return {
+        'blogs': blogs[:count].select_related('feed_image'),
+        # required by the pageurl tag that we want to use within this template
+        'request': context['request'],
+    }
+
 @register.inclusion_tag('tags/breadcrumbs.html', takes_context=True)
 def breadcrumbs(context):
     self = context.get('self')

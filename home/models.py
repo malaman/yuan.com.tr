@@ -13,7 +13,7 @@ class HomePage(Page, TranslatablePageMixin):
     body = StreamField(AppStreamBlock())
     content_panels = [
         FieldPanel('title', classname="full title"),
+        MultiFieldPanel(TranslatablePageMixin.panels, 'Language links'),
         StreamFieldPanel('body'),
         InlinePanel('carousel_items', label="Carousel items"),
-        MultiFieldPanel(TranslatablePageMixin.panels, 'Language links')
     ]

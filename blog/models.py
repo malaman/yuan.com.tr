@@ -2,13 +2,15 @@ from django.db import models
 from django.core.paginator import PageNotAnInteger, Paginator
 from wagtail.wagtailcore.models import Page, Orderable
 from wagtail.wagtailcore.fields import RichTextField, StreamField
-from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, StreamFieldPanel
+from wagtail.wagtailadmin.edit_handlers import FieldPanel, InlinePanel, \
+    MultiFieldPanel, StreamFieldPanel
 from wagtail.wagtailimages.edit_handlers import ImageChooserPanel
 from wagtail.wagtailsearch import index
 from modelcluster.fields import ParentalKey
 from modelcluster.tags import ClusterTaggableManager
 from taggit.models import TaggedItemBase
 from common.models import  AppStreamBlock, CarouselItem, RelatedLink
+from language.link import TranslatablePageMixin
 
 
 # Blog index page
@@ -16,7 +18,7 @@ from common.models import  AppStreamBlock, CarouselItem, RelatedLink
 class BlogIndexPageRelatedLink(Orderable, RelatedLink):
     page = ParentalKey('BlogIndexPage', related_name='related_links')
 
-class BlogIndexPage(Page):
+class BlogIndexPage(Page, TranslatablePageMixin):
     intro = RichTextField(blank=True)
 
     @property
@@ -55,6 +57,7 @@ class BlogIndexPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        MultiFieldPanel(TranslatablePageMixin.panels, 'Language links'),
         FieldPanel('intro', classname="full"),
         InlinePanel('related_links', label="Related links"),
     ]
@@ -74,7 +77,7 @@ class BlogPageTag(TaggedItemBase):
     content_object = ParentalKey('BlogPage', related_name='tagged_items')
 
 
-class BlogPage(Page):
+class BlogPage(Page, TranslatablePageMixin):
     body = StreamField(AppStreamBlock())
     tags = ClusterTaggableManager(through=BlogPageTag, blank=True)
     date = models.DateField("Post date")
@@ -93,6 +96,7 @@ class BlogPage(Page):
 
     content_panels = [
         FieldPanel('title', classname="full title"),
+        MultiFieldPanel(TranslatablePageMixin.panels, 'Language links'),
         FieldPanel('date'),
         StreamFieldPanel('body'),
         InlinePanel('carousel_items', label="Carousel items"),

@@ -162,4 +162,4 @@ WAGTAIL_SITE_NAME = "Yuan Makina Gıda Temizlik Hizmetleri Sanayi ve Ticaret Lim
 # e.g. in notification emails. Don't include '/admin' or a trailing slash
 BASE_URL = 'https://yuan.com.tr'
 
-ALLOWED_HOSTS = [ '.yuan.com.tr', 'localhost', ]
+ALLOWED_HOSTS = [ '.yuan.com.tr', 'localhost', '*',]

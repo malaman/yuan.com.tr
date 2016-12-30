@@ -25,13 +25,15 @@
         <link rel="stylesheet" href="{% static 'assets/css/style.css' %}">
 
         {# CSS Header and Footer #}
-        <link rel="stylesheet" href="{% static 'assets/css/headers/header-v6.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/css/footers/footer-v5.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/headers/header-default.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/css/footers/footer-default.css' %}">
 
         {# CSS Implementing Plugins #}
         <link rel="stylesheet" href="{% static 'assets/plugins/animate.css' %}">
         <link rel="stylesheet" href="{% static 'assets/plugins/line-icons/line-icons.css' %}">
         <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.min.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/plugins/parallax-slider/css/parallax-slider.css' %}">
+        <link rel="stylesheet" href="{% static 'assets/plugins/owl-carousel/owl-carousel/owl.carousel.css' %}">
 
         {# CSS Theme #}
         <link rel="stylesheet" href="{% static 'assets/css/theme-colors/blue.css'' id="style_color" %}">
@@ -65,7 +67,7 @@
 </head>
 
 {# Override this block to set custom body classes on a template by template basis #}
-<body class="{% block body_class %}header-fixed header-fixed-space{% endblock %}">
+<body class="{% block body_class %}header-fixed header-fixed-space-default{% endblock %}">
 
     {% wagtailuserbar %}
 

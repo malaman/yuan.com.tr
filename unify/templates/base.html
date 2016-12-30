@@ -32,12 +32,10 @@
         <link rel="stylesheet" href="{% static 'assets/plugins/animate.css' %}">
         <link rel="stylesheet" href="{% static 'assets/plugins/line-icons/line-icons.css' %}">
         <link rel="stylesheet" href="{% static 'assets/plugins/font-awesome/css/font-awesome.min.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/plugins/parallax-slider/css/parallax-slider.css' %}">
-        <link rel="stylesheet" href="{% static 'assets/plugins/owl-carousel/owl-carousel/owl.carousel.css' %}">
+
 
         {# CSS Theme #}
         <link rel="stylesheet" href="{% static 'assets/css/theme-colors/blue.css'' id="style_color" %}">
-        <link rel="stylesheet" href="{% static 'assets/css/theme-skins/dark.css' %}">
 
         {# CSS Customization #}
         <link rel="stylesheet" type="text/css" href="{% static 'assets/css/custom.css' %}">
@@ -102,18 +100,15 @@
         {# JS Implementing Plugins #}
         <script type="text/javascript" src="{% static 'assets/plugins/back-to-top.js' %}"></script>
         <script type="text/javascript" src="{% static 'assets/plugins/smoothScroll.js' %}"></script>
-        <script type="text/javascript" src="{% static 'assets/plugins/jquery.parallax.js' %}"></script>
 
         {# JS Customization #}
         <script type="text/javascript" src="{% static 'assets/js/custom.js' %}"></script>
 
         {# JS Page Level #}
         <script type="text/javascript" src="{% static 'assets/js/app.js' %}"></script>
-        <script type="text/javascript" src="{% static 'assets/js/plugins/style-switcher.js' %}"></script>
         <script type="text/javascript">
             jQuery(document).ready(function() {
                 App.init();
-                StyleSwitcher.initStyleSwitcher();
             });
         </script>
     {% endcompress %}

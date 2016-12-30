@@ -49,7 +49,14 @@ def top_menu_children(context, parent):
 # Blog feed for home page
 @register.inclusion_tag('tags/footer.html', takes_context=True)
 def footer(context, count=2):
-    blogs = BlogPage.objects.live().order_by('-date')
+    # Get the root langue page in order to list posts in same languages
+    language_root=context['self'].get_ancestors(inclusive=True).get(depth=3)
+
+    # Get list of live blog pages that are descendants of this page
+    blogs = BlogPage.objects.live().descendant_of(language_root)
+
+    # Order by most recent date first
+    blogs = blogs.order_by('-date')
     return {
         'blogs': blogs[:count].select_related('feed_image'),
         # required by the pageurl tag that we want to use within this template

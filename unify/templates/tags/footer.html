@@ -1,8 +1,8 @@
-{% load static %}
+{% load static wagtailcore_tags wagtailimages_tags %}
 
 
-{# Footer Default#}
-<div id="footer-default" class="footer-default">
+{# Footer v5 #}
+<div id="footer-v5" class="footer-v5">
 
     {# Footer #}
     <div class="footer">
@@ -12,90 +12,88 @@
 
             {# Row #}
             <div class="row">
-                
-                {# Col-md-4 #}
-                <div class="col-md-4 md-margin-bottom-40">
 
-                    {# About #}
-                    <div class="headline"><h2>About</h2></div>
-                    <p class="margin-bottom-25 md-margin-bottom-40">Unify is an incredibly beautiful responsive Bootstrap Template for corporate and creative professionals.</p>
-                    {# End About #}
-
-                    {# Mountly Newsletter #}
-                    <div class="headline"><h2>Monthly Newsletter</h2></div>
-                    <p>Subscribe to our newsletter and stay up to date with the latest news and deals!</p>
-                    <form class="footer-subscribe">
-                        <div class="input-group">
-                            <input type="text" class="form-control" placeholder="Email Address">
-                            <span class="input-group-btn">
-                                <button class="btn-u" type="button">Subscribe</button>
-                            </span>
-                        </div>
-                    </form>
-                    {# End Monthly Newsletter #}
-
-                </div>
-                {# End Col-md-4 #}
-
-                {# Col-md-4 #}
-                <div class="col-md-4 md-margin-bottom-40">
-                
-                    {# Recent Blogs #}
-                    <div class="posts">
-                        <div class="headline"><h2>Recent Blog Entries</h2></div>
-                        <dl class="dl-horizontal">
-                            <dt><a href="#"><img src="{% static 'assets/img/sliders/elastislide/6.jpg' %}" alt="" /></a></dt>
-                            <dd>
-                                <p><a href="#">Anim moon officia Unify is an incredibly beautiful responsive Bootstrap Template</a></p>
-                            </dd>
-                            {% for blog in blogs %}
-                                {% include "includes/blog_list_item.html" %}
-                            {% endfor %}
-                        </dl>
-                    </div>
-                    {# End Recent Blogs #}
-
-                </div>
-                {# End Col-md-4 #}
-
-                {# Col-md-4 #}
-                <div class="col-md-4">
-
-                    {# Contact Us #}
-                    <div class="headline"><h2>Contact Us</h2></div>
-                    <address class="md-margin-bottom-40">
-                        25, Lorem Lis Street, Orange <br />
-                        California, US <br />
-                        Phone: 800 123 3456 <br />
-                        Fax: 800 123 3456 <br />
-                        Email: <a href="mailto:info@anybiz.com" class="">info@anybiz.com</a>
-                    </address>
-                    {# End Contact Us #}
-
-                    {# Social Links #}
-                    <div class="headline"><h2>Stay Connected</h2></div>
-                    <ul class="social-icons">
-                        <li><a href="#" data-original-title="Feed" class="social_rss"></a></li>
-                        <li><a href="#" data-original-title="Facebook" class="social_facebook"></a></li>
-                        <li><a href="#" data-original-title="Twitter" class="social_twitter"></a></li>
-                        <li><a href="#" data-original-title="Goole Plus" class="social_googleplus"></a></li>
-                        <li><a href="#" data-original-title="Pinterest" class="social_pintrest"></a></li>
-                        <li><a href="#" data-original-title="Linkedin" class="social_linkedin"></a></li>
-                        <li><a href="#" data-original-title="Vimeo" class="social_vimeo"></a></li>
+                {# About Us #}
+                <div class="col-md-4 sm-margin-bottom-40">
+                    <div class="heading-footer"><h2>About Us</h2></div>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis blandit ut metus a commodo. Pellentesque congue tellus sed enim sollicitudin, id blandit mauris eleifend.</p><br>
+                    <ul class="list-inline dark-social-v2">
+                        <li><a href="#"><i class="rounded-sm fa fa-facebook"></i></a></li>
+                        <li><a href="#"><i class="rounded-sm fa fa-twitter"></i></a></li>
+                        <li><a href="#"><i class="rounded-sm fa fa-google-plus"></i></a></li>
+                        <li><a href="#"><i class="rounded-sm fa fa-instagram"></i></a></li>
+                        <li><a href="#"><i class="rounded-sm fa fa-tumblr"></i></a></li>
+                        <li><a href="#"><i class="rounded-sm fa fa-pinterest"></i></a></li>
                     </ul>
-                    {# End Social Links #}
-
                 </div>
-                {# End Col-md-4 #}
-                
+                {# End About Us #}
+
+
+
+                {# Recent Blog Entries #}
+                <div class="col-md-4 sm-margin-bottom-40">
+                    <div class="heading-footer"><h2>Recent Blog Entries</h2></div>
+                    <ul class="list-unstyled thumb-news">
+                        {% for blog in blogs %}
+                            <li>
+                                {% if blog.feed_image %}
+                                    {% image blog.feed_image width-80 as img %}
+                                    <img class="radius-3x" src="{{ img.url }}" alt="">
+                                {% endif %}
+                                <div class="overflow-h">
+                                    <a href="{% pageurl blog %}">{{ blog.title }}</a>
+                                    <small>{{ blog.date }}</small>
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {# End Recent Blog Entries #}
+
+                {# Latest Tweets #}
+                <div class="col-md-4">
+                    <div class="heading-footer"><h2>Latest Tweets</h2></div>
+                    <ul class="list-unstyled tweets">
+                        <li>
+                            <i class="fa fa-twitter"></i>
+                            <div class="overflow-h">
+                                <p><a href="#">&#64;Toronto </a>voluptates repudiandae sint et molestiae non recusandae.</p>
+                                <small>3 Hours ago</small>
+                            </div>
+                        </li>
+                        <li>
+                            <i class="fa fa-twitter"></i>
+                            <div class="overflow-h">
+                                <p><a href="#">&#64;Twitter </a>Maecenas pharetra tellus et fringilla. Praesent ut consectetur diam.</p>
+                                <small>7 Hours ago</small>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                {# End Latest Tweets #}
+
             </div>
             {# End Row #}
 
         </div>
         {# End Container #}
-        
+
     </div>
     {# End Footer #}
 
+    {# Copyright #}
+    <div class="copyright">
+        <div class="container">
+            <ul class="list-inline terms-menu">
+                <li class="silver">Copyright © 2014 - All Rights Reserved</li>
+                <li><a href="#">Terms of Use</a></li>
+                <li><a href="#">Privacy and Policy</a></li>
+                <li><a href="#">License</a></li>
+                <li><a href="#">Support</a></li>
+            </ul>
+        </div>
+    </div>
+    {# End Copyright #}
+
 </div>
-{# End Footer Default #}
+{# Footer v5 #}
